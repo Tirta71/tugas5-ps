@@ -1,0 +1,51 @@
+.lcg-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.input-row {
+  margin-bottom: 10px;
+}
+
+.input-row label {
+  font-weight: bold;
+}
+
+.input-row input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.generate-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lcg-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.lcg-table th,
+.lcg-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.lcg-table th {
+  background-color: #f2f2f2;
+}
+
+.lcg-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
