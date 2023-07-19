@@ -9,7 +9,7 @@ export default function MyNavbar() {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Tugas 5</Navbar.Brand>
+          <Navbar.Brand href="#home">Tugas Besar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link
               as={Link}

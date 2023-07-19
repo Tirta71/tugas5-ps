@@ -107,7 +107,7 @@ const LCGTable = () => {
 
   return (
     <div className="lcg-container">
-      <h1>Tugas Besar Kelompok Gatau</h1>
+      <h1>Tugas Besar Kelompok 1</h1>
 
       <InputForLcg
         seed={seed}
