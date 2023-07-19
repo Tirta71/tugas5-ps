@@ -16,15 +16,15 @@ export default function MyNavbar() {
               to="/"
               className={location.pathname === "/" ? "active" : ""}
             >
-              LCG
+              Simulasi
             </Nav.Link>
-            <Nav.Link
+            {/* <Nav.Link
               as={Link}
               to="/rng"
               className={location.pathname === "/rng" ? "active" : ""}
             >
               RNG
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
