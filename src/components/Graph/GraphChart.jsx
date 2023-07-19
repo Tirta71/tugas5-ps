@@ -97,46 +97,50 @@ const GraphChart = ({ tableData }) => {
   };
 
   return (
-    <div className="chart-container">
-      <canvas id="chart" ref={chartRef}></canvas>
-      <div className="chart-legend">
-        <span className="legend-item">
-          <span
-            className="legend-color"
-            style={{ backgroundColor: "rgba(75, 192, 192, 0.6)" }}
-          ></span>
-          Kumulatif Kedatangan
-        </span>
-        <span className="legend-item">
-          <span
-            className="legend-color"
-            style={{ backgroundColor: "rgba(192, 75, 75, 0.6)" }}
-          ></span>
-          Hasil Lama Pengisian
-        </span>
-        <span className="legend-item">
-          <span
-            className="legend-color"
-            style={{ backgroundColor: "rgba(192, 192, 75, 0.6)" }}
-          ></span>
-          Waktu Pelayanan
-        </span>
-        <span className="legend-item">
-          <span
-            className="legend-color"
-            style={{ backgroundColor: "blue" }}
-          ></span>
-          Waktu Menunggu Petugas
-        </span>
-        <span className="legend-item">
-          <span
-            className="legend-color"
-            style={{ backgroundColor: "grey" }}
-          ></span>
-          Waktu Menunggu Konsumen
-        </span>
-      </div>
-    </div>
+    <>
+      {tableData.length > 0 && (
+        <div className="chart-container">
+          <canvas id="chart" ref={chartRef}></canvas>
+          <div className="chart-legend">
+            <span className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: "rgba(75, 192, 192, 0.6)" }}
+              ></span>
+              Kumulatif Kedatangan
+            </span>
+            <span className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: "rgba(192, 75, 75, 0.6)" }}
+              ></span>
+              Hasil Lama Pengisian
+            </span>
+            <span className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: "rgba(192, 192, 75, 0.6)" }}
+              ></span>
+              Waktu Pelayanan
+            </span>
+            <span className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: "blue" }}
+              ></span>
+              Waktu Menunggu Petugas
+            </span>
+            <span className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: "grey" }}
+              ></span>
+              Waktu Menunggu Konsumen
+            </span>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
