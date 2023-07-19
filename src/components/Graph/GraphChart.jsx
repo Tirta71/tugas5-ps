@@ -38,8 +38,8 @@ const GraphChart = ({ tableData }) => {
         labels: chartLabels,
         datasets: [
           {
-            label: "Kumulatif Kedatangan",
-            data: tableData.map((row) => row.JumlahKumulatifKedatangan),
+            label: "Kumulatif Pengisian",
+            data: tableData.map((row) => row.JumlahKumulatifPengisian),
             backgroundColor: "rgba(75, 192, 192, 0.6)",
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
@@ -56,6 +56,20 @@ const GraphChart = ({ tableData }) => {
             data: tableData.map((row) => row.TotalDayTime),
             backgroundColor: "rgba(192, 192, 75, 0.6)",
             borderColor: "rgba(192, 192, 75, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Waktu Menunggu Petugas",
+            data: tableData.map((row) => row.WaktuMenungguKonsumen),
+            backgroundColor: "blue",
+            borderColor: "blue",
+            borderWidth: 1,
+          },
+          {
+            label: "Waktu Menunggu Konsumen",
+            data: tableData.map((row) => row.WaktuMenungguPetugas),
+            backgroundColor: "grey",
+            borderColor: "grey",
             borderWidth: 1,
           },
         ],
@@ -106,6 +120,20 @@ const GraphChart = ({ tableData }) => {
             style={{ backgroundColor: "rgba(192, 192, 75, 0.6)" }}
           ></span>
           Waktu Pelayanan
+        </span>
+        <span className="legend-item">
+          <span
+            className="legend-color"
+            style={{ backgroundColor: "blue" }}
+          ></span>
+          Waktu Menunggu Petugas
+        </span>
+        <span className="legend-item">
+          <span
+            className="legend-color"
+            style={{ backgroundColor: "grey" }}
+          ></span>
+          Waktu Menunggu Konsumen
         </span>
       </div>
     </div>

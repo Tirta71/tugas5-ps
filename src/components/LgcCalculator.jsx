@@ -20,7 +20,7 @@ const LCGTable = () => {
     let roundedNumberPrev = null;
     let roundedNumberPrevPengisian = null;
 
-    let JumlahKumulatifKedatangan = 0;
+    let JumlahKumulatifPengisian = 0;
 
     let kedatanganDetik;
     let hasilKedatangan;
@@ -28,9 +28,10 @@ const LCGTable = () => {
     let lamaPengisian;
     let hasilPengisian;
 
-    let totalTime = null;
-
+    let Petugas = 0;
     let TotalDayTime = null;
+    let WaktuMenungguKonsumen = 0;
+    let WaktuMenungguPetugas = 0;
 
     for (let i = 1; i <= parseInt(numIterations); i++) {
       // State Untuk Nilai U Kedatangan
@@ -49,19 +50,34 @@ const LCGTable = () => {
         kedatanganDetik =
           (-2 * Math.log(roundedNumberPrev)) ** 0.5 *
           Math.cos(2 * Math.PI * roundedNumberKedatangan);
-        hasilKedatangan =
-          parseFloat(147.82) + parseFloat(74.54) * kedatanganDetik;
+        hasilKedatangan = parseFloat(46.2) + parseFloat(28.6) * kedatanganDetik;
 
         lamaPengisian =
           (-2 * Math.log(roundedNumberPrevPengisian)) ** 0.5 *
           Math.cos(2 * Math.PI * roundedNumberPengisian);
-        hasilPengisian = parseFloat(172.3) + parseFloat(70.18) * lamaPengisian;
+        hasilPengisian = parseFloat(42.5) + parseFloat(15.4) * lamaPengisian;
 
-        JumlahKumulatifKedatangan += hasilKedatangan;
+        JumlahKumulatifPengisian += hasilPengisian;
+        TotalDayTime = JumlahKumulatifPengisian + hasilKedatangan;
 
-        totalTime = 60;
+        if (i > 2) {
+          if (TotalDayTime < tableRows[i - 2].TotalDayTime) {
+            WaktuMenungguKonsumen =
+              tableRows[i - 2].TotalDayTime - TotalDayTime;
+          } else {
+            WaktuMenungguKonsumen = 0;
+          }
+        }
 
-        TotalDayTime = JumlahKumulatifKedatangan + hasilPengisian + totalTime;
+        if (i > 2) {
+          if (TotalDayTime > tableRows[i - 2].TotalDayTime) {
+            WaktuMenungguPetugas = TotalDayTime - tableRows[i - 2].TotalDayTime;
+          } else {
+            WaktuMenungguPetugas = 0;
+          }
+        }
+
+        Petugas = 1;
       }
 
       tableRows.push({
@@ -70,12 +86,14 @@ const LCGTable = () => {
         UiPengisian: uPengisian.toFixed(4),
         KedatanganDetik: i > 1 ? kedatanganDetik.toFixed(4) : "",
         HasilKedatangan: i > 1 ? hasilKedatangan.toFixed(0) : "",
-        JumlahKumulatifKedatangan:
-          i > 1 ? JumlahKumulatifKedatangan.toFixed(0) : "",
+        JumlahPetugas: i > 1 ? Petugas.toFixed(0) : "",
         LamaPengisian: i > 1 ? lamaPengisian.toFixed(4) : "",
         HasilPengisian: i > 1 ? hasilPengisian.toFixed(0) : "",
-        TotalTime: i > 1 ? totalTime.toFixed(0) : "",
+        JumlahKumulatifPengisian:
+          i > 1 ? JumlahKumulatifPengisian.toFixed(0) : "",
         TotalDayTime: i > 1 ? TotalDayTime.toFixed(0) : "",
+        WaktuMenungguKonsumen: i > 1 ? WaktuMenungguKonsumen.toFixed(0) : "",
+        WaktuMenungguPetugas: i > 1 ? WaktuMenungguPetugas.toFixed(0) : "",
       });
 
       xKedatangan = zKedatangan;
@@ -112,7 +130,7 @@ const LCGTable = () => {
           <thead>
             <tr>
               <th colSpan={4}>Bilangan Acak Yang Di bangkitkan</th>
-              <th colSpan={4}>Simulasi</th>
+              <th colSpan={7}>Simulasi</th>
             </tr>
 
             <tr>
@@ -120,10 +138,12 @@ const LCGTable = () => {
               <th>Ui (Kedatangan)</th>
               <th>Ui (Lama Pengisian)</th>
               <th>Hasil Kedatangan</th>
-              <th>Kumulatif Kedatangan</th>
               <th>Hasil Lama Pengisian</th>
-              <th>Waktu Pelayanan</th>
+              <th>Kumulatif Pengisian</th>
               <th>Waktu Selesai Di layani</th>
+              <th>Petugas</th>
+              <th>Waktu Menunggu Petugas</th>
+              <th>Waktu Menunggu Konsumen</th>
             </tr>
           </thead>
           <tbody>
@@ -133,13 +153,12 @@ const LCGTable = () => {
                 <td>{row.UiKedatangan}</td>
                 <td>{row.UiPengisian}</td>
                 <td>{row.HasilKedatangan}</td>
-                <td>{row.JumlahKumulatifKedatangan}</td>
                 <td>{row.HasilPengisian}</td>
-                <td>{row.TotalTime}</td>
+                <td>{row.JumlahKumulatifPengisian}</td>
                 <td>{row.TotalDayTime}</td>
-                {/* {myData.Data.map((dataItem, index) => (
-            <>{index + 1 === row.i && <td>{dataItem}</td>}</>
-          ))} */}
+                <td>{row.JumlahPetugas}</td>
+                <td>{row.WaktuMenungguKonsumen}</td>
+                <td>{row.WaktuMenungguPetugas}</td>
               </tr>
             ))}
           </tbody>
