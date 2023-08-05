@@ -58,6 +58,7 @@ const LCGTable = () => {
         hasilPengisian = parseFloat(42.5) + parseFloat(15.4) * lamaPengisian;
 
         JumlahKumulatifPengisian += hasilPengisian;
+
         TotalDayTime = JumlahKumulatifPengisian + hasilKedatangan;
 
         if (i > 2) {
@@ -129,7 +130,7 @@ const LCGTable = () => {
         <table className="lcg-table">
           <thead>
             <tr>
-              <th colSpan={4}>Bilangan Acak Yang Di bangkitkan</th>
+              <th colSpan={3}>Bilangan Acak Yang Di bangkitkan</th>
               <th colSpan={7}>Simulasi</th>
             </tr>
 

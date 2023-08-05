@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyNavbar from "./components/myNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RngCalculator from "./components/RngCalculator";
+import LcgCalculator from "./components/LcgCalculator";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LCGTable />} />
         <Route path="/rng" element={<RngCalculator />} />
+        <Route path="/lcg" element={<LcgCalculator />} />
       </Routes>
     </Router>
   );

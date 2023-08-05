@@ -18,13 +18,20 @@ export default function MyNavbar() {
             >
               Simulasi
             </Nav.Link>
-            {/* <Nav.Link
+            <Nav.Link
               as={Link}
               to="/rng"
               className={location.pathname === "/rng" ? "active" : ""}
             >
               RNG
-            </Nav.Link> */}
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/rng"
+              className={location.pathname === "/lcg" ? "active" : ""}
+            >
+              LCG
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
