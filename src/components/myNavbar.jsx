@@ -27,7 +27,7 @@ export default function MyNavbar() {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/rng"
+              to="/lcg"
               className={location.pathname === "/lcg" ? "active" : ""}
             >
               LCG
